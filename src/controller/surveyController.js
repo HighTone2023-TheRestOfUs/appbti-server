@@ -1,12 +1,11 @@
-import * as baseResponseStatus from "../response/baseResponseStatus"
+import baseResponseStatus from "../response/baseResponseStatus"
 import db from "../db"
 
 
 export const addApp = async (req,res) => {
     const {appName,simplePoint,numberPoint,functionPoint,category} = req.body
-
     try {
-        db.query(`insert into apps(appName,simplePoint,numberPoint,functionPoint,category) values(${appName},${simplePoint},${numberPoint},${functionPoint},${category})`)
+        db.query(`insert into apps(appName,simplePoint,numberPoint,functionPoint,category) values("${appName}",${simplePoint},${numberPoint},${functionPoint},"${category}")`)
         return res.status(200).json({
             ...baseResponseStatus.SUCCESS,
             message:"앱 등록 성공"
