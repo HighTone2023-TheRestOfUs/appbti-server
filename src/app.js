@@ -21,7 +21,7 @@ class App{
 
     // route들을 사용한다
     getRouting(){
-        this.app.use('/api/survey',routers.userRouter);
+        this.app.use('/api/survey',routers.surveyRouter);
     }
 
 }
