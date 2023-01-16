@@ -1,5 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv')
+import cors from "cors"
 const methodOverride = require('method-override');
 import routers from "./routers/index"
 
@@ -15,13 +16,14 @@ class App{
     setMiddleWare(){
         this.app.use(express.json())
         this.app.use(express.urlencoded({extended:false}));
-
+        this.app.use(cors())
         this.app.use(methodOverride());
     }
 
     // route들을 사용한다
     getRouting(){
         this.app.use('/api/survey',routers.surveyRouter);
+        this.app.use('/api/stats',routers.statsRouter)
     }
 
 }
